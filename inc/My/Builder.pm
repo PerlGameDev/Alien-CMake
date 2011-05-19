@@ -5,10 +5,11 @@ use warnings;
 use base 'Module::Build';
 
 use lib "inc";
-use My::Utility qw(find_Box2D_dir find_file sed_inplace);
+use My::Utility qw(find_CMake_dir find_file sed_inplace);
 use File::Spec::Functions qw(catdir catfile splitpath catpath rel2abs abs2rel);
 use File::Path qw(make_path remove_tree);
 use File::Copy qw(cp);
+use File::Copy::Recursive qw(dircopy);
 use File::Fetch;
 use File::Find;
 use Archive::Extract;
@@ -38,13 +39,13 @@ sub ACTION_code {
     my $patches      = 'patches';
     # we are deriving the subdir name from $bp->{title} as we want to
     # prevent troubles when user reinstalls the same version of
-    # Alien::Box2D with different build options
+    # Alien::CMake with different build options
     my $share_subdir = $self->{properties}->{dist_version} . '_' . substr(sha1_hex($bp->{title}), 0, 8);
     my $build_out    = catfile('sharedir', $share_subdir);
     my $build_src    = 'build_src';
     $self->add_to_cleanup($build_src, $build_out);
 
-    # save some data into future Alien::Box2D::ConfigData
+    # save some data into future Alien::CMake::ConfigData
     $self->config_data('build_prefix', $build_out);
     $self->config_data('build_params', $bp);
     $self->config_data('build_cc', $Config{cc});
@@ -60,7 +61,7 @@ sub ACTION_code {
       # all the following functions die on error, no need to test ret values
       $self->fetch_binaries($download);
       $self->clean_dir($build_out);
-      $self->extract_binaries($download, $build_out);
+      $self->extract_binaries($download, $build_out, $build_src);
       $self->set_config_data($build_out);
     }
     elsif($bp->{buildtype} eq 'build_from_sources' ) {
@@ -114,14 +115,18 @@ sub fetch_sources {
 }
 
 sub extract_binaries {
-  my ($self, $download, $build_out) = @_;
+  my ($self, $download, $build_out, $build_src) = @_;
 
   # do extract binaries
   my $bp = $self->notes('build_params');
   my $archive = catfile($download, File::Fetch->new(uri => $bp->{url})->file);
   print "Extracting $archive...\n";
   my $ae = Archive::Extract->new( archive => $archive );
-  die "###ERROR###: Cannot extract $archive ", $ae->error unless $ae->extract(to => $build_out);
+  die "###ERROR###: Cannot extract $archive ", $ae->error unless $ae->extract(to => $build_src);
+
+  my ($prefix, $bindir, $sharedir) = find_CMake_dir(rel2abs($build_src));
+  dircopy($bindir,   catdir($build_out, 'bin'));
+  dircopy($sharedir, catdir($build_out, 'share'));
 }
 
 sub extract_sources {
@@ -154,19 +159,18 @@ sub extract_sources {
 sub set_config_data {
   my( $self, $build_out ) = @_;
 
-  # try to find Box2D root dir
-  my ($prefix, $incdir, $libdir) = find_Box2D_dir(rel2abs($build_out));
-  die "###ERROR### Cannot find Box2D directory in 'sharedir'" unless $prefix;
+  # try to find CMake root dir
+  my ($prefix, $bindir, $sharedir) = find_CMake_dir(rel2abs($build_out));
+  die "###ERROR### Cannot find CMake directory in 'sharedir'" unless $prefix;
   $self->config_data('share_subdir', abs2rel($prefix, rel2abs('sharedir')));
 
   # set defaults
   my $cfg = {
     # defaults (used on MS Windows build)
-    version     => $self->notes('build_box2d_version'),
+    version     => $self->notes('build_cmake_version'),
     prefix      => '@PrEfIx@',
-    libs        => '-L' . $self->get_path('@PrEfIx@/lib') . ' -lBox2D',
-    cflags      => '-I' . $self->get_path('@PrEfIx@/include'),
-    shared_libs => [ ],
+    bin        => '-L' . $self->get_path('@PrEfIx@/bin'),
+    share      => '-I' . $self->get_path('@PrEfIx@/share'),
   };
   
   if($self->config_data('build_params')->{version}) {
@@ -180,7 +184,7 @@ sub set_config_data {
 sub build_binaries {
   # this needs to be overriden in My::Builder::<platform>
   my ($self, $build_out, $build_src) = @_;
-  die "###ERROR### My::Builder cannot build Box2D from sources, use rather My::Builder::<platform>";
+  die "###ERROR### My::Builder cannot build CMake from sources, use rather My::Builder::<platform>";
 }
 
 sub get_path {

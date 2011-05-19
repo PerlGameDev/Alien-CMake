@@ -1,7 +1,7 @@
-package Alien::Box2D;
+package Alien::CMake;
 use strict;
 use warnings;
-use Alien::Box2D::ConfigData;
+use Alien::CMake::ConfigData;
 use File::ShareDir qw(dist_dir);
 use File::Spec;
 use File::Find;
@@ -9,7 +9,7 @@ use File::Spec::Functions qw(catdir catfile rel2abs);
 
 =head1 NAME
 
-Alien::Box2D - Build and make available Box2D library - L<http://box2d.org/>
+Alien::CMake - Build and make available CMake library - L<http://cmake.org/>
 
 =head1 VERSION
 
@@ -22,45 +22,45 @@ $VERSION = eval $VERSION;
 
 =head1 SYNOPSIS
 
-Alien::Box2D during its installation does one of the following:
+Alien::CMake during its installation does one of the following:
 
 =over
 
 =item * Builds I<ODE> binaries from source codes and installs dev 
 files (headers: *.h, static library: *.a) into I<share>
-directory of Alien::Box2D distribution.
+directory of Alien::CMake distribution.
 
 =back
 
-Later you can use Alien::Box2D in your module that needs to link with I<libode>
+Later you can use Alien::CMake in your module that needs to link with I<libode>
 like this:
 
     # Sample Build.pl
     use Module::Build;
-    use Alien::Box2D;
+    use Alien::CMake;
 
     my $build = Module::Build->new(
-      module_name => 'Any::Box2D::Module',
+      module_name => 'Any::CMake::Module',
       # + other params
       build_requires => {
-                    'Alien::Box2D' => 0,
+                    'Alien::CMake' => 0,
                     # + others modules
       },
       configure_requires => {
-                    'Alien::Box2D' => 0,
+                    'Alien::CMake' => 0,
                     # + others modules
       },
-      extra_compiler_flags => Alien::Box2D->config('cflags'),
-      extra_linker_flags   => Alien::Box2D->config('libs'),
+      extra_compiler_flags => Alien::CMake->config('cflags'),
+      extra_linker_flags   => Alien::CMake->config('libs'),
     )->create_build_script;
 
-NOTE: Alien::Box2D is required only for building not for using 'Any::Box2D::Module'.
+NOTE: Alien::CMake is required only for building not for using 'Any::CMake::Module'.
 
 =head1 DESCRIPTION
 
-In short C<Alien::Box2D> can be used to detect and get configuration
-settings from an already installed Box2D. It offers also an option to
-download Box2D source codes and build binaries from scratch.
+In short C<Alien::CMake> can be used to detect and get configuration
+settings from an already installed CMake. It offers also an option to
+download CMake source codes and build binaries from scratch.
 
 =head1 METHODS
 
@@ -68,14 +68,14 @@ download Box2D source codes and build binaries from scratch.
 
 This function is the main public interface to this module:
 
-    Alien::Box2D->config('prefix');
-    Alien::Box2D->config('version');
-    Alien::Box2D->config('libs');
-    Alien::Box2D->config('cflags');
+    Alien::CMake->config('prefix');
+    Alien::CMake->config('version');
+    Alien::CMake->config('libs');
+    Alien::CMake->config('cflags');
 
 =head1 BUGS
 
-Please post issues and bugs at L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Alien-Box2D>
+Please post issues and bugs at L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Alien-CMake>
 
 =head1 AUTHOR
 
@@ -95,19 +95,19 @@ LICENSE file included with this module.
 sub config
 {
   my ($package, $param) = @_;
-  return _box2d_config_via_config_data($param) if(Alien::Box2D::ConfigData->config('config'));
+  return _box2d_config_via_config_data($param) if(Alien::CMake::ConfigData->config('config'));
 }
 
 ### internal functions
 sub _box2d_config_via_config_data
 {
   my ($param) = @_;
-  my $share_dir = dist_dir('Alien-Box2D');
-  my $subdir = Alien::Box2D::ConfigData->config('share_subdir');
+  my $share_dir = dist_dir('Alien-CMake');
+  my $subdir = Alien::CMake::ConfigData->config('share_subdir');
   return unless $subdir;
   my $real_prefix = catdir($share_dir, $subdir);
   return unless ($param =~ /[a-z0-9_]*/i);
-  my $val = Alien::Box2D::ConfigData->config('config')->{$param};
+  my $val = Alien::CMake::ConfigData->config('config')->{$param};
   return unless $val;
   # handle @PrEfIx@ replacement
   $val =~ s/\@PrEfIx\@/$real_prefix/g;
