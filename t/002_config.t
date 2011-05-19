@@ -11,7 +11,5 @@ like( Alien::CMake->config('prefix'), qr/.+/, "Testing config('prefix')" );
 my $p = Alien::CMake->config('prefix');
 is( (-d Alien::CMake->config('prefix')), 1, "Testing existence of 'prefix' directory" );
 
-diag( "VERSION=" . Alien::CMake->config('version') );
-diag( "PREFIX=" . Alien::CMake->config('prefix') );
-diag( "CFLAGS=" . Alien::CMake->config('cflags') );
-diag( "LIBS=" . Alien::CMake->config('libs') );
+diag( "BIN=" . Alien::CMake->config('bin') );
+diag( "SHARE=" . Alien::CMake->config('share') );

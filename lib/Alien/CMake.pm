@@ -13,11 +13,11 @@ Alien::CMake - Build and make available CMake library - L<http://cmake.org/>
 
 =head1 VERSION
 
-Version 0.1
+Version 0.01
 
 =cut
 
-our $VERSION = '0.1';
+our $VERSION = '0.01';
 $VERSION = eval $VERSION;
 
 =head1 SYNOPSIS
@@ -26,7 +26,7 @@ Alien::CMake during its installation does one of the following:
 
 =over
 
-=item * Builds I<ODE> binaries from source codes and installs dev 
+=item * Builds I<CMake> binaries from source codes and installs dev 
 files (headers: *.h, static library: *.a) into I<share>
 directory of Alien::CMake distribution.
 

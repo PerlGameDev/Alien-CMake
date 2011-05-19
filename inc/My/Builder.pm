@@ -167,10 +167,10 @@ sub set_config_data {
   # set defaults
   my $cfg = {
     # defaults (used on MS Windows build)
-    version     => $self->notes('build_cmake_version'),
-    prefix      => '@PrEfIx@',
-    bin        => '-L' . $self->get_path('@PrEfIx@/bin'),
-    share      => '-I' . $self->get_path('@PrEfIx@/share'),
+    version => $self->notes('build_cmake_version'),
+    prefix  => '@PrEfIx@',
+    bin     => $self->get_path('@PrEfIx@/bin'),
+    share   => $self->get_path('@PrEfIx@/share'),
   };
   
   if($self->config_data('build_params')->{version}) {
