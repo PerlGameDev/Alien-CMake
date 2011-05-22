@@ -1,59 +1,59 @@
 NAME
-    Alien::Box2D - Build and make available Box2D library -
-    <http://box2d.org/>
+    Alien::CMake - Build and make available CMake library -
+    <http://cmake.org/>
 
 VERSION
-    Version 0.1
+    Version 0.01
 
 SYNOPSIS
-    Alien::Box2D during its installation does one of the following:
+    Alien::CMake during its installation does one of the following:
 
-    *   Builds *ODE* binaries from source codes and installs dev files
+    *   Builds *CMake* binaries from source codes and installs dev files
         (headers: *.h, static library: *.a) into *share* directory of
-        Alien::Box2D distribution.
+        Alien::CMake distribution.
 
-    Later you can use Alien::Box2D in your module that needs to link with
+    Later you can use Alien::CMake in your module that needs to link with
     *libode* like this:
 
         # Sample Build.pl
         use Module::Build;
-        use Alien::Box2D;
+        use Alien::CMake;
 
         my $build = Module::Build->new(
-          module_name => 'Any::Box2D::Module',
+          module_name => 'Any::CMake::Module',
           # + other params
           build_requires => {
-                        'Alien::Box2D' => 0,
+                        'Alien::CMake' => 0,
                         # + others modules
           },
           configure_requires => {
-                        'Alien::Box2D' => 0,
+                        'Alien::CMake' => 0,
                         # + others modules
           },
-          extra_compiler_flags => Alien::Box2D->config('cflags'),
-          extra_linker_flags   => Alien::Box2D->config('libs'),
+          extra_compiler_flags => Alien::CMake->config('cflags'),
+          extra_linker_flags   => Alien::CMake->config('libs'),
         )->create_build_script;
 
-    NOTE: Alien::Box2D is required only for building not for using
-    'Any::Box2D::Module'.
+    NOTE: Alien::CMake is required only for building not for using
+    'Any::CMake::Module'.
 
 DESCRIPTION
-    In short "Alien::Box2D" can be used to detect and get configuration
-    settings from an already installed Box2D. It offers also an option to
-    download Box2D source codes and build binaries from scratch.
+    In short "Alien::CMake" can be used to detect and get configuration
+    settings from an already installed CMake. It offers also an option to
+    download CMake source codes and build binaries from scratch.
 
 METHODS
   config()
     This function is the main public interface to this module:
 
-        Alien::Box2D->config('prefix');
-        Alien::Box2D->config('version');
-        Alien::Box2D->config('libs');
-        Alien::Box2D->config('cflags');
+        Alien::CMake->config('prefix');
+        Alien::CMake->config('version');
+        Alien::CMake->config('libs');
+        Alien::CMake->config('cflags');
 
 BUGS
     Please post issues and bugs at
-    <http://rt.cpan.org/NoAuth/Bugs.html?Dist=Alien-Box2D>
+    <http://rt.cpan.org/NoAuth/Bugs.html?Dist=Alien-CMake>
 
 AUTHOR
     KMX, <kmx at cpan.org>
