@@ -33,13 +33,13 @@ my $prebuilt_binaries = [
 
 my $source_packs = [
 ## the first set for source code build will be a default option
-  {
-    title    => "Source code build: CMake 2.1.2 (needs cmake)",
-    dirname  => 'CMake',
-    url      => 'http://box2d.googlecode.com/files/CMake_v2.1.2.zip',
-    sha1sum  => 'b1f09f38fc130ae6c17e1767747a3a82bf8e517f',
-    patches  => [ ],
-  },
+#  {
+#    title    => "Source code build: CMake 2.1.2 (needs cmake)",
+#    dirname  => 'CMake',
+#    url      => 'http://box2d.googlecode.com/files/CMake_v2.1.2.zip',
+#    sha1sum  => 'b1f09f38fc130ae6c17e1767747a3a82bf8e517f',
+#    patches  => [ ],
+#  },
 ## you can add another src build set
 ];
 
