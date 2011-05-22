@@ -14,12 +14,20 @@ our $cc = $Config{cc};
 
 my $prebuilt_binaries = [
     {
-      title    => "Binaries Win/32bit CMake-2.1.2",
+      title    => "Binaries Win/32bit CMake-2.8.4",
       url      => 'http://www.cmake.org/files/v2.8/cmake-2.8.4-win32-x86.zip',
       version  => '2.8.4',
       sha1sum  => '539ce250521d964a8770e0a7362db196dbc97fbc',
       arch_re  => qr/^MSWin32-x86-multi-thread$/,
       os_re    => qr/^MSWin32$/
+    },
+    {
+      title    => "Binaries Linux/i386 CMake-2.8.4",
+      url      => 'http://www.cmake.org/files/v2.8/cmake-2.8.4-Linux-i386.tar.gz',
+      version  => '2.8.4',
+      sha1sum  => '51112b5e203e07a4430249e6252ec2ec461a3aff',
+      arch_re  => qr/(86.*linux|linux.*86)/,
+      os_re    => qr/^linux$/
     },
 ];
 
@@ -75,8 +83,8 @@ sub find_CMake_dir {
   my ($prefix, $incdir, $libdir);
   return unless $root;
 
-  # try to find CMake.h
-  my ($found) = find_file($root, qr/cmake(\.exe)?$/i ); # take just the first one
+  # try to find 
+  my ($found) = find_file($root, qr/[\\\/]cmake(\.exe)?$/i ); # take just the first one
   return unless $found;
   
   # get prefix dir
