@@ -109,11 +109,17 @@ sub set_path
     my $i = 0;
     foreach (@paths)
     {
-        push(@_paths, $_) unless -e "$_/sh.exe"; # cmake throws a warning when sh.exe is in path when using mingw32
+      push(@_paths, $_) unless -e "$_/sh.exe"; # cmake throws a warning when sh.exe is in path when using mingw32
     }
-    $ENV{'PATH'} = join($path_sep, Alien::CMake->config('bin'), @_paths);
+    
+    unless(Alien::CMake::ConfigData->config('script'))
+    {
+      unshift(@_paths, Alien::CMake->config('bin'));
+    }
+    
+    $ENV{'PATH'} = join($path_sep, @_paths);
   }
-  else
+  elsif(!Alien::CMake::ConfigData->config('script'))
   {
     $ENV{'PATH'} = join($path_sep, Alien::CMake->config('bin'), $ENV{'PATH'});
   }
@@ -124,11 +130,20 @@ sub set_path
 ### internal functions
 sub _cmake_config_via_config_data
 {
-  my ($param) = @_;
-  my $share_dir = dist_dir('Alien-CMake');
-  my $subdir = Alien::CMake::ConfigData->config('share_subdir');
-  return unless $subdir;
-  my $real_prefix = catdir($share_dir, $subdir);
+  my ($param)     = @_;
+  my $real_prefix = '';
+  my $subdir      = Alien::CMake::ConfigData->config('share_subdir');
+  if(Alien::CMake::ConfigData->config('script'))
+  {
+    $real_prefix = $subdir;
+  }
+  else
+  {
+    my $share_dir = dist_dir('Alien-CMake');
+    return unless $subdir;
+    $real_prefix = catdir($share_dir, $subdir);
+  }
+  
   return unless ($param =~ /[a-z0-9_]*/i);
   my $val = Alien::CMake::ConfigData->config('config')->{$param};
   return unless $val;

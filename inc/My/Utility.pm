@@ -3,10 +3,11 @@ use strict;
 use warnings;
 use base qw(Exporter);
 
-our @EXPORT_OK = qw(check_prebuilt_binaries check_src_build find_CMake_dir find_file sed_inplace);
+our @EXPORT_OK = qw(check_already_existing check_prebuilt_binaries check_src_build find_CMake_dir find_file sed_inplace);
 use Config;
 use File::Spec::Functions qw(splitdir catdir splitpath catpath rel2abs);
 use File::Find qw(find);
+use File::Which;
 use File::Copy qw(cp);
 use Cwd qw(realpath);
 
@@ -55,6 +56,28 @@ my $source_packs = [
 #  },
 ## you can add another src build set
 ];
+
+sub check_already_existing
+{
+  my $script = shift || 'cmake';
+  print "Gonna check for existing cmake...\n";
+  print "(scriptname=$script)\n";
+  my $devnull = File::Spec->devnull();
+  my $version = `$script --version 2>$devnull`;
+  return if($? >> 8);
+  my $prefix  = File::Which::which($script);
+  $version    =~ s/[\r\n]*$//;
+  $version    = $1 if $version =~ /(\d.*)/;
+  $prefix     =~ s/[\\\/]\Q$script\E(\.exe)?$//i;
+  #returning HASHREF
+  return {
+    title     => "Already installed CMake ver=$version prefix=$prefix",
+    buildtype => 'use_already_existing',
+    version   => $version,
+    script    => $script,
+    prefix    => $prefix,
+  };
+}
 
 sub check_prebuilt_binaries
 {

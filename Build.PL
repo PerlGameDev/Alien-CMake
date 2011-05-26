@@ -3,7 +3,7 @@ use warnings;
 
 use lib "inc";
 use File::Spec::Functions qw(catdir catfile);
-use My::Utility qw(check_prebuilt_binaries check_src_build);
+use My::Utility qw(check_already_existing check_prebuilt_binaries check_src_build);
 
 #### we need the platform-specific module
 my %platforms =(
@@ -23,6 +23,7 @@ my $build = $package->new(
   requires                  => {
     'File::Spec'            => '0',
     'File::ShareDir'        => '0',
+    'File::Which'           => '0',
   },
   build_requires            => {  #need to have for running: ./Build (install|test)
     'File::Spec'            => '0',
@@ -32,6 +33,7 @@ my $build = $package->new(
     'File::Copy::Recursive' => '0',
     'File::Fetch'           => '0',
     'File::Find'            => '0',
+    'File::Which'           => '0',
     'Digest::SHA'           => '0',
     'Archive::Extract'      => '0',
     'Archive::Tar'          => '0',
@@ -43,6 +45,7 @@ my $build = $package->new(
     'File::Copy::Recursive' => '0',
     'File::Fetch'           => '0',
     'File::Find'            => '0',
+    'File::Which'           => '0',
     'Digest::SHA'           => '0',
     'Archive::Extract'      => '0',
     'Module::Build'         => '0.36',
@@ -69,6 +72,10 @@ print "\n-----------------------------------------\n\n";
 #### check what options we have for our platform
 my $rv;
 my @candidates = ();
+
+if($rv=check_already_existing()) {
+  push @candidates, $rv;
+};
 
 if($rv=check_prebuilt_binaries($build->os_type)) {
   push @candidates, @{$rv};

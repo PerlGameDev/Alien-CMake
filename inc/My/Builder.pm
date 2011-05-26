@@ -54,8 +54,9 @@ sub ACTION_code {
     $self->config_data('script', '');            # just to be sure
     $self->config_data('config', {});            # just to be sure
 
-    if($bp->{buildtype} eq 'use_config_script') {
+    if($bp->{buildtype} eq 'use_already_existing') {
       $self->config_data('script', $bp->{script});
+      $self->set_config_data($bp->{prefix});
     }
     elsif($bp->{buildtype} eq 'use_prebuilt_binaries') {
       # all the following functions die on error, no need to test ret values

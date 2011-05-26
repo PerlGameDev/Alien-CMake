@@ -1,4 +1,8 @@
 Version history for Perl module Alien::CMake
 
+0.02	26/05/2010
+	- added sub set_path [FROGGS]
+	- it detects already installed cmake now [FROGGS]
+
 0.01	22/05/2010
 	- initial version
