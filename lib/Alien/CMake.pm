@@ -95,11 +95,34 @@ LICENSE file included with this module.
 sub config
 {
   my ($package, $param) = @_;
-  return _box2d_config_via_config_data($param) if(Alien::CMake::ConfigData->config('config'));
+  return _cmake_config_via_config_data($param) if(Alien::CMake::ConfigData->config('config'));
+}
+
+sub set_path
+{
+  my $path_sep = ':';
+  if($^O eq 'MSWin32')
+  {
+    $path_sep  = ';';
+    my @paths  = split($path_sep, $ENV{'PATH'});
+    my @_paths = ();
+    my $i = 0;
+    foreach (@paths)
+    {
+        push(@_paths, $_) unless -e "$_/sh.exe"; # cmake throws a warning when sh.exe is in path when using mingw32
+    }
+    $ENV{'PATH'} = join($path_sep, Alien::CMake->config('bin'), @_paths);
+  }
+  else
+  {
+    $ENV{'PATH'} = join($path_sep, Alien::CMake->config('bin'), $ENV{'PATH'});
+  }
+  
+  return $ENV{'PATH'};
 }
 
 ### internal functions
-sub _box2d_config_via_config_data
+sub _cmake_config_via_config_data
 {
   my ($param) = @_;
   my $share_dir = dist_dir('Alien-CMake');

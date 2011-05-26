@@ -39,7 +39,7 @@ my $prebuilt_binaries = [
       url      => 'http://www.cmake.org/files/v2.8/cmake-2.8.4-Darwin-universal.tar.gz',
       version  => '2.8.4',
       sha1sum  => '190d9e536ed78c756e875747aedcad507fba74a8',
-      arch_re  => qr//,
+      arch_re  => qr/./,
       os_re    => qr/^darwin$/
     },
 ];
