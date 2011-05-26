@@ -163,7 +163,12 @@ sub set_config_data {
   # try to find CMake root dir
   my ($prefix, $bindir, $sharedir) = find_CMake_dir(rel2abs($build_out));
   die "###ERROR### Cannot find CMake directory in 'sharedir'" unless $prefix;
-  $self->config_data('share_subdir', abs2rel($prefix, rel2abs('sharedir')));
+  if($self->config_data('build_params')->{buildtype} eq 'use_already_existing') {
+    $self->config_data('share_subdir', rel2abs($prefix));
+  }
+  else {
+    $self->config_data('share_subdir', abs2rel($prefix, rel2abs('sharedir')));
+  }
 
   # set defaults
   my $cfg = {
