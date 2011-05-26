@@ -12,13 +12,18 @@ use Cwd qw(realpath);
 
 our $cc = $Config{cc};
 
+# cmake-2.8.4-AIX-powerpc.tar.gz - 1a7692a1c3565770aa2c5fe620ccb477c221349c
+# cmake-2.8.4-IRIX64-64.tar.gz - 286dc02395545c62eb878fc6662a4ea666eb8046
+# cmake-2.8.4-IRIX64-n32.tar.gz - 26b3e27c77bb9a95a85a9f100b6129776a2a8cef
+# cmake-2.8.4-SunOS-sparc.tar.gz - 068c20450ee7e3074ac4c8396e3fa73f28aba35d
+
 my $prebuilt_binaries = [
     {
       title    => "Binaries Win/32bit CMake-2.8.4",
       url      => 'http://www.cmake.org/files/v2.8/cmake-2.8.4-win32-x86.zip',
       version  => '2.8.4',
       sha1sum  => '539ce250521d964a8770e0a7362db196dbc97fbc',
-      arch_re  => qr/^MSWin32-x86-multi-thread$/,
+      arch_re  => qr/^MSWin32-x(86|64)-multi-thread$/,
       os_re    => qr/^MSWin32$/
     },
     {
@@ -28,6 +33,14 @@ my $prebuilt_binaries = [
       sha1sum  => '51112b5e203e07a4430249e6252ec2ec461a3aff',
       arch_re  => qr/(86.*linux|linux.*86)/,
       os_re    => qr/^linux$/
+    },
+    {
+      title    => "Binaries darwin CMake-2.8.4",
+      url      => 'http://www.cmake.org/files/v2.8/cmake-2.8.4-Darwin-universal.tar.gz',
+      version  => '2.8.4',
+      sha1sum  => '190d9e536ed78c756e875747aedcad507fba74a8',
+      arch_re  => qr//,
+      os_re    => qr/^darwin$/
     },
 ];
 
