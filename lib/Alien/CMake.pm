@@ -13,11 +13,11 @@ Alien::CMake - Build and make available CMake library - L<http://cmake.org/>
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 $VERSION = eval $VERSION;
 
 =head1 SYNOPSIS
