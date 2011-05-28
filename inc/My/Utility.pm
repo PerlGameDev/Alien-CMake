@@ -39,7 +39,7 @@ my $prebuilt_binaries = [
       title    => "Binaries OpenBSD/i386 CMake-2.8.4",
       url      => 'http://froggs.de/cmake/cmake-2.8.4-openbsd-i386.tar.gz',
       version  => '2.8.4',
-      sha1sum  => '44c39561024aaa34e6695e5d9478538ebd3e422c',
+      sha1sum  => 'f14e1fd3c757d37c796e6c1af04dd2ee3fac3ea1',
       arch_re  => qr/./,
       os_re    => qr/^openbsd$/
     },
