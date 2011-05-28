@@ -41,7 +41,7 @@ my $prebuilt_binaries = [
       version  => '2.8.1',
       sha1sum  => 'b0d2aa8bc214cf308311d2749b56e5e85ec280f3',
       arch_re  => qr/./,
-      os_re    => qr/^openbsd$/
+      os_re    => qr/^netbsd$/
     },
     {
       title    => "Binaries OpenBSD/i386 CMake-2.8.4",
