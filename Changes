@@ -1,5 +1,8 @@
 Version history for Perl module Alien::CMake
 
+0.03	28/05/2010
+	- added binaries options for netbsd, openbsd and solaris [FROGGS]
+
 0.02	26/05/2010
 	- added sub set_path [FROGGS]
 	- it detects already installed cmake now [FROGGS]
