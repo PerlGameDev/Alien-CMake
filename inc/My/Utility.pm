@@ -29,11 +29,19 @@ my $prebuilt_binaries = [
     },
     {
       title    => "Binaries Linux/i386 CMake-2.8.4",
-      url      => 'http://www.cmake.org/files/v2.8/cmake-2.8.4-Linux-i386.tar.gz',
+      url      => 'http://froggs.de/cmake/cmake-2.8.4-linux-i386.tar.gz',
       version  => '2.8.4',
-      sha1sum  => '51112b5e203e07a4430249e6252ec2ec461a3aff',
+      sha1sum  => '9343a7fea7409b8a8154659c13e835521fe1b2fd',
       arch_re  => qr/(86.*linux|linux.*86)/,
       os_re    => qr/^linux$/
+    },
+    {
+      title    => "Binaries OpenBSD/i386 CMake-2.8.4",
+      url      => 'http://froggs.de/cmake/cmake-2.8.4-openbsd-i386.tar.gz',
+      version  => '2.8.4',
+      sha1sum  => '44c39561024aaa34e6695e5d9478538ebd3e422c',
+      arch_re  => qr/./,
+      os_re    => qr/^openbsd$/
     },
     {
       title    => "Binaries darwin CMake-2.8.4",
