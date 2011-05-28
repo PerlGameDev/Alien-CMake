@@ -35,6 +35,14 @@ my $prebuilt_binaries = [
       os_re    => qr/^linux$/
     },
     {
+      title    => "Binaries FreeBSD/i386 CMake-2.6.4",
+      url      => 'http://froggs.de/cmake/cmake-2.6.4-freebsd-i386.tar.gz',
+      version  => '2.6.4',
+      sha1sum  => 'b6160a8a7a657bf933b6f87d06bc195b7cc9705a',
+      arch_re  => qr/./,
+      os_re    => qr/^freebsd$/
+    },
+    {
       title    => "Binaries NetBSD/i386 CMake-2.8.1",
       url      => 'http://froggs.de/cmake/cmake-2.8.1-netbsd-i386.tar.gz',
       version  => '2.8.1',
