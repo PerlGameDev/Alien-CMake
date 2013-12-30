@@ -13,11 +13,11 @@ Alien::CMake - Build and make available CMake library - L<http://cmake.org/>
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 $VERSION = eval $VERSION;
 
 =head1 SYNOPSIS
@@ -79,7 +79,9 @@ Please post issues and bugs at L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Alien-
 
 =head1 AUTHOR
 
-KMX, E<lt>kmx at cpan.orgE<gt>
+KMX, E<lt>kmx at cpan.orgE<gt>,
+FROGGS, E<lt>froggs at cpan.orgE<gt>,
+plicease
 
 =head1 COPYRIGHT
 

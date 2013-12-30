@@ -1,16 +1,16 @@
 NAME
     Alien::CMake - Build and make available CMake library -
-    <http://cmake.org/>
+    http://cmake.org/
 
 VERSION
-    Version 0.03
+    Version 0.04
 
 SYNOPSIS
     Alien::CMake during its installation does one of the following:
 
-    *   Builds *CMake* binaries from source codes and installs dev files
-        (headers: *.h, static library: *.a) into *share* directory of
-        Alien::CMake distribution.
+    * Builds *CMake* binaries from source codes and installs dev files
+    (headers: *.h, static library: *.a) into *share* directory of
+    Alien::CMake distribution.
 
     Later you can use Alien::CMake in your module that needs to link with
     *libode* like this:
@@ -38,7 +38,7 @@ SYNOPSIS
     'Any::CMake::Module'.
 
 DESCRIPTION
-    In short "Alien::CMake" can be used to detect and get configuration
+    In short `Alien::CMake' can be used to detect and get configuration
     settings from an already installed CMake. It offers also an option to
     download CMake source codes and build binaries from scratch.
 
@@ -53,10 +53,10 @@ METHODS
 
 BUGS
     Please post issues and bugs at
-    <http://rt.cpan.org/NoAuth/Bugs.html?Dist=Alien-CMake>
+    http://rt.cpan.org/NoAuth/Bugs.html?Dist=Alien-CMake
 
 AUTHOR
-    KMX, <kmx at cpan.org>
+    KMX, <kmx at cpan.org>, FROGGS, <froggs at cpan.org>, plicease
 
 COPYRIGHT
     This program is free software; you can redistribute it and/or modify it

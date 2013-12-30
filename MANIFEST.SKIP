@@ -17,4 +17,5 @@ deps
 \.gz$
 \.o$
 \.obj$
-\.exe$
+\.exe
+$^MYMETA\.json$
