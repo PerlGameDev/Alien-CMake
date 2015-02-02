@@ -153,7 +153,7 @@ sub find_CMake_dir {
   # try to find 
   my ($found) = find_file($root, qr/[\\\/]bin[\\\/]cmake(\.exe)?$/i ); # take just the first one
   return unless $found;
-  
+
   # get prefix dir
   my ($v, $d, $f) = splitpath($found);
   my @pp = reverse splitdir($d);

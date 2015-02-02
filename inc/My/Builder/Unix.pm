@@ -27,7 +27,7 @@ sub build_binaries {
   }
 
   chdir $srcdir;
-  
+
   # do 'cmake ...'
   my $cmd = $self->get_cmake_cmd($prefixdir);
   print "CMaking ...\n";
