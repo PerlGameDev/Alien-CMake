@@ -1,3 +1,4 @@
+.dir-locals.el
 .git
 _build
 stage
@@ -19,3 +20,4 @@ deps
 \.obj$
 \.exe
 $^MYMETA\.json$
+^MYMETA\.json$
