@@ -113,19 +113,19 @@ sub set_path
     {
       push(@_paths, $_) unless -e "$_/sh.exe"; # cmake throws a warning when sh.exe is in path when using mingw32
     }
-    
+
     unless(Alien::CMake::ConfigData->config('script'))
     {
       unshift(@_paths, Alien::CMake->config('bin'));
     }
-    
+
     $ENV{'PATH'} = join($path_sep, @_paths);
   }
   elsif(!Alien::CMake::ConfigData->config('script'))
   {
     $ENV{'PATH'} = join($path_sep, Alien::CMake->config('bin'), $ENV{'PATH'});
   }
-  
+
   return $ENV{'PATH'};
 }
 
@@ -145,7 +145,7 @@ sub _cmake_config_via_config_data
     return unless $subdir;
     $real_prefix = catdir($share_dir, $subdir);
   }
-  
+
   return unless ($param =~ /[a-z0-9_]*/i);
   my $val = Alien::CMake::ConfigData->config('config')->{$param};
   return unless $val;
