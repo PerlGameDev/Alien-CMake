@@ -8,7 +8,7 @@ use My::Utility qw(check_already_existing check_prebuilt_binaries check_src_buil
 #### we need the platform-specific module
 my %platforms =(
        # Unix = default, thus not listing all UNIX like systems
-       MSWin32 => 'Windows',       
+       MSWin32 => 'Windows',
 );
 my $package = 'My::Builder::' . ($platforms{$^O} || 'Unix');
 print "Gonna use '$package' class ...\n";

@@ -27,7 +27,7 @@ sub build_binaries {
   }
 
   chdir $srcdir;
-  
+
   # do 'cmake ...'
   print "CMaking ...\n";
   $self->do_system('cmake', '-GMinGW Makefiles', '-DCMAKE_INSTALL_PREFIX=' . $self->config_data('build_prefix'),
@@ -53,9 +53,9 @@ sub get_make {
   my @try = ($Config{gmake}, 'gmake', 'make', $Config{make});
   my %tested;
   print "Gonna detect GNU make:\n";
-  
+
   #return 'mingw32-make';
-  
+
   foreach my $name ( @try ) {
     next unless $name;
     next if $tested{$name};

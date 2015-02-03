@@ -9,10 +9,8 @@ use My::Utility qw(find_CMake_dir find_file sed_inplace);
 use File::Spec::Functions qw(catdir catfile splitpath catpath rel2abs abs2rel);
 use File::Path qw(make_path remove_tree);
 use File::Copy qw(cp);
-use File::Copy::Recursive qw(dircopy);
 use File::Fetch;
 use File::Find;
-use Archive::Extract;
 use Digest::SHA qw(sha1_hex);
 use Config;
 
@@ -122,12 +120,15 @@ sub extract_binaries {
   my $bp = $self->notes('build_params');
   my $archive = catfile($download, File::Fetch->new(uri => $bp->{url})->file);
   print "Extracting $archive...\n";
+  require Archive::Extract;
   my $ae = Archive::Extract->new( archive => $archive );
   die "###ERROR###: Cannot extract $archive ", $ae->error unless $ae->extract(to => $build_src);
 
   my ($prefix, $bindir, $sharedir) = find_CMake_dir(rel2abs($build_src));
-  dircopy($bindir,   catdir($build_out, 'bin'));
-  dircopy($sharedir, catdir($build_out, 'share'));
+
+  require File::Copy::Recursive;
+  File::Copy::Recursive::dircopy($bindir,   catdir($build_out, 'bin'));
+  File::Copy::Recursive::dircopy($sharedir, catdir($build_out, 'share'));
 }
 
 sub extract_sources {
@@ -178,7 +179,7 @@ sub set_config_data {
     bin     => $self->get_path('@PrEfIx@/bin'),
     share   => $self->get_path('@PrEfIx@/share'),
   };
-  
+
   if($self->config_data('build_params')->{version}) {
     $cfg->{version} = $self->config_data('build_params')->{version};
   }
@@ -238,16 +239,16 @@ sub check_sha1sum {
 
 sub patch_command {
   my( $self, $base_dir, $patch_file ) = @_;
-  
+
   print("patch_command: $base_dir, $patch_file\n");
-  
+
   my $devnull = File::Spec->devnull();
   my $patch_rv = system("patch -v > $devnull 2>&1");
   if ($patch_rv == 0) {
     $patch_file = File::Spec->abs2rel( $patch_file, $base_dir );
     # the patches are expected with UNIX newlines
     # the following command works on both UNIX+Windows
-	return qq("$^X" -pe0 -- "$patch_file" | patch -p1); # paths of files to patch should be relative to build_src
+    return qq("$^X" -pe0 -- "$patch_file" | patch -p1); # paths of files to patch should be relative to build_src
   }
   warn "###WARN### patch not available";
   return '';
