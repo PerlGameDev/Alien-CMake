@@ -19,5 +19,4 @@ deps
 \.o$
 \.obj$
 \.exe
-$^MYMETA\.json$
 ^MYMETA\.json$
