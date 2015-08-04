@@ -27,10 +27,10 @@ my $prebuilt_binaries = [
       os_re    => qr/^MSWin32$/
     },
     {
-      title    => "Binaries Linux/i386 CMake-2.8.12.1",
-      url      => 'http://www.cmake.org/files/v2.8/cmake-2.8.12.1-Linux-i386.tar.gz',
-      version  => '2.8.12.1',
-      sha1sum  => 'b157f5b0fb2209b967dd087b1c166bfe229c56b8',
+      title    => "Binaries Linux/i386 CMake-3.3.0",
+      url      => 'http://www.cmake.org/files/v3.3/cmake-3.3.0-Linux-i386.tar.gz',
+      version  => '3.3.0',
+      sha1sum  => '0fff21ec9b62b54c206c63b141b568983cb07ea4',
       arch_re  => qr/(86.*linux|linux.*86)/,
       os_re    => qr/^linux$/
     },
