@@ -19,10 +19,10 @@ our $cc = $Config{cc};
 
 my $prebuilt_binaries = [
     {
-      title    => "Binaries Win/32bit CMake-2.8.12.1",
-      url      => 'http://www.cmake.org/files/v2.8/cmake-2.8.12.1-win32-x86.zip',
-      version  => '2.8.12.1',
-      sha1sum  => '6a27d8fcf887774e56fa165eddd5242e1c350464',
+      title    => "Binaries Win/32bit CMake-3.3.0",
+      url      => 'http://www.cmake.org/files/v3.3/cmake-3.3.0-win32-x86.zip',
+      version  => '3.3.0',
+      sha1sum  => '8e6493601704bf34bfda4f5796d2362bc0091bcc',
       arch_re  => qr/^MSWin32-x(86|64)-multi-thread(-64int)?$/,
       os_re    => qr/^MSWin32$/
     },
