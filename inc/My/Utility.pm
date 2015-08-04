@@ -59,10 +59,10 @@ my $prebuilt_binaries = [
       os_re    => qr/^openbsd$/
     },
     {
-      title    => "Binaries SunOS/Solaris CMake-2.8.4",
-      url      => 'http://www.cmake.org/files/v2.8/cmake-2.8.4-SunOS-sparc.tar.gz',
-      version  => '2.8.4',
-      sha1sum  => '068c20450ee7e3074ac4c8396e3fa73f28aba35d',
+      title    => "Binaries SunOS/Solaris CMake-2.8.5",
+      url      => 'http://www.cmake.org/files/v2.8/cmake-2.8.5-SunOS-sparc.tar.gz',
+      version  => '2.8.5',
+      sha1sum  => '500ee64f5ce63dded1bd16296d657425b6d4ecb5',
       arch_re  => qr/./,
       os_re    => qr/^solaris$/
     },
