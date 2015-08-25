@@ -1,5 +1,8 @@
 Version history for Perl module Alien::CMake
 
+0.06    25/08/2015
+        - update to cmake-3.3.0 on Solaris, Windows, Linux and OS X
+
 0.05	02/02/2014
 	- fix arch detection for Windows/x64 [plicease]
 
