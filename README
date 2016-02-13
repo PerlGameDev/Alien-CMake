@@ -60,7 +60,8 @@ BUGS
     <http://rt.cpan.org/NoAuth/Bugs.html?Dist=Alien-CMake>
 
 AUTHOR
-    KMX, <kmx at cpan.org>, FROGGS, <froggs at cpan.org>, plicease
+    KMX, <kmx at cpan.org>, FROGGS, <froggs at cpan.org>, plicease <plicease
+    at cpan.org>
 
 COPYRIGHT
     This program is free software; you can redistribute it and/or modify it

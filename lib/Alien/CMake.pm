@@ -86,7 +86,7 @@ Please post issues and bugs at L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Alien-
 
 KMX, E<lt>kmx at cpan.orgE<gt>,
 FROGGS, E<lt>froggs at cpan.orgE<gt>,
-plicease
+plicease E<lt>plicease at cpan.orgE<gt>
 
 =head1 COPYRIGHT
 
