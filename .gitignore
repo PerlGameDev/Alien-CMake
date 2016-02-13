@@ -19,3 +19,5 @@ nytprof.out
 *.o
 *.bs
 /Alien-CMake-*
+/build_done
+/download/

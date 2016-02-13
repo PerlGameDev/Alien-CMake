@@ -61,6 +61,7 @@ my $build = $package->new(
   # sharedir is used for storing compiled/prebuilt binaries of CMake lib
   # avoid using 'share' name as M::B doe not handle well paths like /xx/yy/share/zz/ww/share/xx
 );
+$build->add_to_cleanup('download');
 $build->create_build_script();
 
 #### clean build_done stamp; force rebuild when running 'Build'

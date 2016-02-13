@@ -73,6 +73,11 @@ This function is the main public interface to this module:
     Alien::CMake->config('libs');
     Alien::CMake->config('cflags');
 
+=head2 bin_dir()
+
+For compatability with L<Alien::Base>, this will return the path containing C<cmake>
+or empty list if it is already in the C<PATH>.
+
 =head1 BUGS
 
 Please post issues and bugs at L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Alien-CMake>
@@ -152,6 +157,13 @@ sub _cmake_config_via_config_data
   # handle @PrEfIx@ replacement
   $val =~ s/\@PrEfIx\@/$real_prefix/g;
   return $val;
+}
+
+sub bin_dir
+{
+  !Alien::CMake::ConfigData->config('script')
+    ? (Alien::CMake->config('bin'))
+    : ();
 }
 
 1;

@@ -1,5 +1,7 @@
 Version history for Perl module Alien::CMake
 
+        - Add bin_dir method for Alien::Base compatibility
+
 0.06    25/08/2015
         - update to cmake-3.3.0 on Solaris, Windows, Linux and OS X
 
