@@ -3,7 +3,7 @@ NAME
     <http://cmake.org/>
 
 VERSION
-    Version 0.07
+    Version 0.08
 
 SYNOPSIS
     Alien::CMake during its installation does one of the following:
