@@ -27,6 +27,14 @@ my $prebuilt_binaries = [
       os_re    => qr/^MSWin32$/
     },
     {
+      title    => "Binaries Linux/x86_64 CMake-3.3.0",
+      url      => 'http://cmake.org/files/v3.3/cmake-3.3.0-Linux-x86_64.tar.gz',
+      version  => '3.3.0',
+      sha1sum  => '46efa5e3921c1956477121e1531e023292325c31',
+      arch_re  => qr/^x86_64-/,
+      os_re    => qr/^linux$/
+    },
+    {
       title    => "Binaries Linux/i386 CMake-3.3.0",
       url      => 'http://www.cmake.org/files/v3.3/cmake-3.3.0-Linux-i386.tar.gz',
       version  => '3.3.0',
