@@ -1,6 +1,7 @@
 language: perl
 
 install:
+  - cpanm -n File::Which File::Copy::Recursive File::Fetch Archive::Extract Module::Build File::Path Digest::SHA
   - cpanm -n --installdeps .
 
 perl:
