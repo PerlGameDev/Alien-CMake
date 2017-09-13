@@ -1,5 +1,6 @@
 Version history for Perl module Alien::CMake
 
+0.10    09/12/2017
         - Require File::Fetch 0.50 at the suggestion of Slaven Rezić (SREZIC++)
 
 0.09    08/10/2017
