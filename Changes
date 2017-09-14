@@ -1,5 +1,8 @@
 Version history for Perl module Alien::CMake
 
+        - File::Fetch 0.50 is a configure require.
+          Fixes prereq bug introduced in 0.10
+
 0.10    09/12/2017
         - Require File::Fetch 0.50 at the suggestion of Slaven Rezić (SREZIC++)
 
