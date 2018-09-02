@@ -14,13 +14,14 @@ my $package = 'My::Builder::' . ($platforms{$^O} || 'Unix');
 print "Gonna use '$package' class ...\n";
 eval "require $package" or die "Require '$package' failed: $@\n";
 
-#### Stadard Module::Builder stuff
+#### Standard Module::Builder stuff
 my $build = $package->new(
   module_name               => 'Alien::CMake',
   all_from                  => 'lib/Alien/CMake.pm',
   dist_author               => 'KMX <kmx@cpan.org>',
   license                   => 'perl',
   requires                  => {
+    'perl'                  => '5.008',
     'File::Spec'            => '0',
     'File::ShareDir'        => '0',
     'File::Which'           => '0',
