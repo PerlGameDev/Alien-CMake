@@ -53,7 +53,7 @@ my $build = $package->new(
   },
   meta_merge => {
     resources  => {
-      bugtracker => 'http://rt.cpan.org/NoAuth/Bugs.html?Dist=Alien-CMake',
+      bugtracker => 'https://github.com/PerlGameDev/Alien-CMake/issues',
       repository => 'http://github.com/PerlGameDev/Alien-CMake',
       x_MailingList => 'https://groups.google.com/forum/#!forum/perl5-alien',
       x_IRC => "irc://irc.perl.org/#native",
