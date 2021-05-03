@@ -2,4 +2,4 @@
 
 set -ex
 
-cip exec cpanm -n File::Which File::Copy::Recursive File::Fetch File::Path Archive::Extract Digest::SHA
+cip exec cpanm -n File::Which File::Copy::Recursive File::Fetch File::Path Archive::Extract Digest::SHA CPAN::Meta

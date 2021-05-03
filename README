@@ -64,7 +64,7 @@ METHODS
 
 BUGS
     Please post issues and bugs at
-    <http://rt.cpan.org/NoAuth/Bugs.html?Dist=Alien-CMake>
+    <https://github.com/PerlGameDev/Alien-CMake/issues>
 
 AUTHOR
     KMX, <kmx at cpan.org>, FROGGS, <froggs at cpan.org>, plicease <plicease

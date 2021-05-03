@@ -50,14 +50,22 @@ my $build = $package->new(
     'Digest::SHA'           => '0',
     'Archive::Extract'      => '0',
     'Module::Build'         => '0.36',
+    'CPAN::Meta::Spec'      => '2.00',
   },
   meta_merge => {
-    resources  => {
-      bugtracker => 'http://rt.cpan.org/NoAuth/Bugs.html?Dist=Alien-CMake',
-      repository => 'http://github.com/PerlGameDev/Alien-CMake',
-      x_MailingList => 'https://groups.google.com/forum/#!forum/perl5-alien',
+    'meta-spec' => { version => 2 },
+    resources => {
+      bugtracker => {
+        web  => 'https://github.com/PerlGameDev/Alien-CMake/issues',
+      },
+      homepage => 'https://metacpan.org/pod/Alien::CMake',
+      repository => {
+        type => 'git',
+        url  => 'https://github.com/PerlGameDev/Alien-CMake.git',
+        web  => 'https://github.com/PerlGameDev/Alien-CMake',
+      },
       x_IRC => "irc://irc.perl.org/#native",
-    }
+    },
   },
   create_readme => 1,
   share_dir => 'sharedir',

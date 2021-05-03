@@ -87,7 +87,7 @@ or empty list if it is already in the C<PATH>.
 
 =head1 BUGS
 
-Please post issues and bugs at L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Alien-CMake>
+Please post issues and bugs at L<https://github.com/PerlGameDev/Alien-CMake/issues>
 
 =head1 AUTHOR
 
